@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.diabin.festec.example.MainActivity">
+    tools:context="com.diabin.festec.example.ExampleActivity">
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/icon_test"
