@@ -9,12 +9,17 @@ import java.util.HashMap;
  */
 
 public class Latte {
+    /**
+     * 配置Context
+     * @param context
+     * @return
+     */
     public static Configurator init(Context context) {
         getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static HashMap<Object, Object> getConfigurations() {
+    public static HashMap<Object, Object> getConfigurations() {
         return Configurator.getInstance().getLatteConfigs();
     }
 

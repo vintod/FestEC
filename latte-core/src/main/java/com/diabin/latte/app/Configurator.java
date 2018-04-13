@@ -15,9 +15,13 @@ public class Configurator {
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private Configurator() {
+        //设置配置开始
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY, false);
     }
 
+    /**
+     * 恶汉模式
+     */
     public static Configurator getInstance() {
         return Holder.INSTANCE;
     }
@@ -32,9 +36,13 @@ public class Configurator {
 
     public final void configure() {
         initIcons();
+        //设置配置完成
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
     }
 
+    /**
+     * 检查配置是否完成
+     */
     private void checkConfiguration() {
         final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigType.CONFIG_READY.name());
         if (!isReady) {
@@ -42,6 +50,12 @@ public class Configurator {
         }
     }
 
+    /**
+     * 根据Key返回某一个配置项
+     * @param key
+     * @param <T>
+     * @return
+     */
     @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key) {
         checkConfiguration();
@@ -52,11 +66,19 @@ public class Configurator {
         return (T) LATTE_CONFIGS.get(key);
     }
 
+    /**
+     * 配置apihost
+     * @param host
+     * @return
+     */
     public final Configurator withApiHost(String host) {
         LATTE_CONFIGS.put(ConfigType.API_HOST, host);
         return this;
     }
 
+    /**
+     * 根据传入的字体项进行初始化
+     */
     private void initIcons() {
         if (ICONS.size() > 0) {
             final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
@@ -66,6 +88,11 @@ public class Configurator {
         }
     }
 
+    /**
+     * 配置字体图片
+     * @param descriptor
+     * @return
+     */
     public final Configurator withIcon(IconFontDescriptor descriptor) {
         ICONS.add(descriptor);
         return this;
