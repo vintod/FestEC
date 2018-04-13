@@ -3,6 +3,7 @@ package com.diabin.latte.net;
 import com.diabin.latte.app.ConfigType;
 import com.diabin.latte.app.Latte;
 
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -14,6 +15,14 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 
 public class RestCreator {
+    private static final class ParamsHolder {
+        private static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+    }
+
+    public static WeakHashMap<String, Object> getParams() {
+        return ParamsHolder.PARAMS;
+    }
+
     private static final class RetrofitHolder {
         private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigType.API_HOST.name());
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()

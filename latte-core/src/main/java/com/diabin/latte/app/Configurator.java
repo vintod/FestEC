@@ -16,7 +16,7 @@ public class Configurator {
 
     private Configurator() {
         //设置配置开始
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY, false);
+        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
     }
 
     /**
@@ -67,12 +67,12 @@ public class Configurator {
     }
 
     /**
-     * 配置apihost
+     * 添加apihost
      * @param host
      * @return
      */
     public final Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigType.API_HOST, host);
+        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
         return this;
     }
 
@@ -89,7 +89,7 @@ public class Configurator {
     }
 
     /**
-     * 配置字体图片
+     * 字体图片
      * @param descriptor
      * @return
      */
